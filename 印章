@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<math.h>
+#define N 22
+int main()
+{
+    double a[N][N],p;
+    int n,m,i,j;
+    scanf("%d%d",&n,&m);
+    p=1.0/n;
+    
+    for(i=1;i<=m;i++)
+    {
+        for(j=1;j<=n;j++)
+        {
+            if(i<j)
+            {
+                a[i][j]=0;
+            }
+            if(j==1){
+                a[i][j]=pow(p,i-1);
+            }else{
+                a[i][j] = a[i-1][j] * (j*1.0/n) + a[i-1][j-1] * ((n-j+1)*1.0/n);
+            }
+        }
+    }
+    printf("%.4lf",a[m][n]);
+    return 0;
+}
